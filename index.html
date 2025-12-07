@@ -6,859 +6,1395 @@
   <title>Microsoft</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-
-    *{
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    body{
-      padding: 0 ;
+    
+    body {
+      padding: 0;
+      overflow-x: hidden;
     }
-    header{
+    
+    /* HEADER */
+    header {
       flex-direction: row;
       flex-wrap: wrap;
       padding: 15px 45px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1000;
     }
-    .left{
+    
+    .left {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 30px;
       flex-wrap: wrap;
     }
-    nav{
+    
+    .desktop-nav {
       display: flex;
-      gap: 20px;
+      gap: 25px;
       flex-wrap: wrap;
     }
-    .right{
-      display: flex;
-      gap: 20px;
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #333;
+      cursor: pointer;
+      padding: 5px;
     }
-    a{
+    
+    .right {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+    
+    .right a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    a {
       text-decoration: none;
-      color: rgb(130, 126, 126);
+      color: #262626;
       font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
-    a:hover{
-      text-decoration: underline 1px solid rgb(43, 42, 42);
+    
+    a:hover {
+      color: #0067b8;
+      text-decoration: underline;
       text-underline-offset: 4px;
     }
-    .hero{
-
+    
+    /* HERO SECTION */
+    .hero-container {
       width: 100%;
-      height: 550px;
-      background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero-Desktop-Surface-Laptop-Copilot-PC-Platinum-FY26HOL?&resMode=sharp2&op_usm=1.5,0.65,15,0&wid=3840&hei=2160&qlt=95&fit=constrain&dpr=on,2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: 650px;
+      background-image: url('https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/gldn-CP-Windows11-GlobalLaunch?wid=3840&hei=1600&fmt=jpeg&qlt=90&fit=constrain');
       background-size: cover;
-      background-position:center ;
-      /* background-repeat: no-repeat; */
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 0 100px;
-      /* padding-left: 680px;
-      padding-right: 100px; */
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: zoomInOut 25s ease-in-out infinite alternate;
+      transform-origin: center;
     }
-    .info{
-      max-width: 450px;
+    
+    @keyframes zoomInOut {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05);
+      }
+    }
+    
+    .hero-content {
+      position: absolute;
+      left: 120px;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 480px;
       color: #000;
-      
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      animation: slideInLeft 1s ease-out;
+      backdrop-filter: blur(5px);
     }
-    .info h1{
-      font-size: 42px;
-      font-weight: 500;
-      margin-bottom: 15px;
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translate(-50px, -50%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(0, -50%);
+      }
     }
-    .info p{
-      font-size: 18px;
+    
+    .hero-content h1 {
+      font-size: 44px;
+      font-weight: 600;
       margin-bottom: 20px;
+      line-height: 1.2;
+      animation: fadeInUp 1s ease-out 0.3s both;
     }
-    .hero-button{
+    
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      color: #333;
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero-button {
       display: inline-block;
-      background-color: #0067b8;
+      background-color: #1b1ec4;
       color: white;
-      padding: 12px 25px;
+      padding: 14px 32px;
       border-radius: 8px;
       text-decoration: none;
       font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease-out 0.7s both;
+      box-shadow: 0 4px 12px rgba(0, 103, 184, 0.3);
     }
-    .tag{
+    
+    .hero-button:hover {
+      background-color: #0056a3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 103, 184, 0.4);
+    }
+    
+    .hero-content .tag {
       display: inline-block;
       background-color: #882A8B;
       color: white;
-      padding:12px 25px ;
-      border-radius: 8px;
-      font-size:16px ;
-      margin-bottom: 20px;
+      padding: 8px 15px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      animation: fadeInUp 1s ease-out 0.1s both;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .card:hover {
+      animation: float 0.6s ease-in-out;
+    }
+    
     section.questions {
-  background: linear-gradient(135deg, #03398b, #0078d4); /* blue gradient */
-  padding: 60px 20px;
-  text-align: center;
-  border-radius: 15px;
-  max-width: 900px;
-  margin: 50px auto;
-  color: white;
-}
-
-.questions h1 {
-  font-size: 28px;
-  margin-bottom: 30px;
-}
-
-.ask {
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto 30px auto;
-}
-
-.ask input {
-  width: 100%;
-  padding: 15px 50px 15px 20px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
-}
-
-.ask i {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: gray;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.questions div button {
-  background: transparent;
-  color: white;
-  border: 1px solid white;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.questions div button:hover {
-  background: white;
-  color: #0078d4;
-}
-.icon{
-  padding:50px  180px;
-  display: flex;
-  /* justify-content: space-between; */
-  gap: 40px;
-  /* /* background-color: #0078d4; */
-} 
-.item{
-  display: flex;
-  flex-direction: column;
-  color: #03406e;
-}
-.item p{
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.item i{
-  padding: 0 50px;
-}
-.card-section{
-  padding: 0 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.card{
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    padding-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
-    /* display: flex;
-    flex-direction: column; */
-}
-
-.card:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-}
-
-.card img{
-    width: 100%;
-    border-bottom: 1px solid #eee;
-}
-
-.card .tag{
-    background: #6b2bbf;
-    color: #fff;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 30px;
-    display: inline-block;
-    margin: 12px 15px 5px;
-    font-weight: bold;
-}
-
-.card h3{
-    font-size: 18px;
-    margin: 10px 15px;
-    line-height: 1.3;
-}
-
-.card p{
-    height: 100px;
-    margin: 10px 15px;
-    color: #555;
-    font-size: 14px;
-    /* flex-grow: 1; */
-}
-
-.card button{
+      background: linear-gradient(135deg, #03398b, #0078d4);
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 15px;
+      max-width: 900px;
+      margin: 50px auto;
+      color: white;
+      animation: fadeIn 1s ease-out;
+    }
     
-    margin: 15px;
-    padding: 10px 18px;
-    border: none;
-    background: #1b1ec4;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-   
-}
-
-button:hover{
-    background: #0051cc;
-}
-.Xbox{
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
-  height: 450px;
-  margin: 50px 100px;
-  background-color:#f4f2f4;
-  overflow: hidden;
-  border-radius: 12px;
-}
-.Xbox-info{
-  width: 50%;
-  padding: 100px;
-  background-color: #f4f2f4;
-  display: grid;
-  gap: 20px;
-  align-content: center;
-}
-.Xbox-image{
-  border-radius: 12px;
-  padding: 20px;
- display: flex;
-  width: 50%;
-}
-.Xbox-image img{
-  border-radius: 12px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.Xbox-info button{
-
-    padding: 10px  20px;
-    border: none;
-    background: #1b1ec4;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    width: max-content;
-    justify-self: start;
-   
-}
-.businesses{
-  background-color: #DCEEF8;
-  padding: 40px 100px;
- 
-}
-.business{
-  background-color: #DCEEF8;
-  padding: 20px 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-.box{
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    padding-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-.box:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-}
-.box img{
-    width: 100%;
-    border-bottom: 1px solid #eee;
-    padding: 10px;
-    border-radius: 15px;
-}
-.box h3{
-    font-size: 18px;
-    margin: 10px 15px;
-    line-height: 1.3;
- 
-}
-.box p{
-    height: 100px;
-    margin: 10px 15px;
-    color: #555;
-    font-size: 14px;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
     
-}
-.box button{
+    .questions h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
     
-    margin: 15px ;
-    padding: 10px 10px;
-    border: none;
-    background: #1b1ec4;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    justify-content: end;
-   margin-top: auto;
-   width: max-content;
-    justify-self: start;
-}
-.AI{
-  background-color: #DCEEF8;
-  padding: 40px 100px;
- 
-}
-
-.copilot{
-  background-color: #DCEEF8;
-  padding: 20px 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-.pilot{
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    padding-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-.pilot:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-}
-.pilot img{
-    width: 100%;
-    border-bottom: 1px solid #eee;
-    padding: 10px;
-    border-radius: 15px;
-}
-.pilot h3{
-    font-size: 18px;
-    margin: 10px 15px;
-    line-height: 1.3;
- 
-}
-.pilot p{
-    height: 100px;
-    margin: 10px 15px;
-    color: #555;
-    font-size: 14px;
+    .ask {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+    }
     
-}
-.pilot button{
+    .ask input {
+      width: 100%;
+      padding: 15px 50px 15px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
     
-    margin: 15px ;
-    padding: 10px 10px;
-    border: none;
-    background: #1b1ec4;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    justify-content: end;
-   margin-top: auto;
-   width: max-content;
-    justify-self: start;
-}
-.biodiversity{
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
-  height: 450px;
-  margin: 50px 100px;
-  background-color:#f4f2f4;
-  overflow: hidden;
-  border-radius: 12px;
-}
-.biodiversity-info{
-  width: 50%;
-  padding: 100px;
-  background-color: #f4f2f4;
-  display: grid;
-  gap: 20px;
-  align-content: center;
-}
-.biodiversity-image{
-  border-radius: 12px;
-  padding: 20px;
- display: flex;
-  width: 50%;
-}
-.biodiversity-image img{
-  border-radius: 12px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.biodiversity-info button{
-
-    padding: 10px  20px;
-    border: none;
-    background: #1b1ec4;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    width: max-content;
-    justify-self: start;
-   
-}
-.footer{
-  background: #F2F2F2;
-  padding: 60px 80px;
-}
-
-.footer-container{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px,1fr));
-  gap: 5px;
-}
-
-.footer-col h4{
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.footer-col a{
-  display: block;
-  text-decoration: none;
-  color: #555;
-  font-size: 14px;
-  margin: 6px 0;
-  transition: .2s;
-}
-
-.footer-col a:hover{
-  color: #000;
-  text-decoration: underline;
-}
-/* --- MOBILE FIRST --- */
-@media (max-width: 1024px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 20px;
-    gap: 10px;
-  }
-
-  nav {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .hero {
-    flex-direction: column;
-    padding: 20px;
-    height: auto;
-    text-align: center;
-  }
-
-  .hero .info {
-    max-width: 100%;
-  }
-
-  .icon {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .Xbox, .biodiversity {
-    flex-direction: column;
-    height: auto;
-    margin: 30px 20px;
-  }
-
-  .Xbox-info, .biodiversity-info {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-  }
-
-  .Xbox-image, .biodiversity-image {
-    width: 100%;
-    padding: 0;
-  }
-
-  .Xbox-image img, .biodiversity-image img {
-    width: 100%;
-    height: auto;
-  }
-
-  .businesses, .AI, .copilot, .card-section, .business {
-    padding: 20px;
-  }
-
-  .card, .box, .pilot {
-    margin: 0 auto;
-  }
-
-  .card p, .box p, .pilot p {
-    height: auto;
-  }
-
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  .questions h1 {
-    font-size: 22px;
-  }
-
-  .footer {
-    padding: 30px 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .right {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  nav a {
-    font-size: 12px;
-  }
-
-  .hero-button, .hero .tag {
-    font-size: 14px;
-    padding: 10px 18px;
-  }
-
-  .card h3, .box h3, .pilot h3 {
-    font-size: 16px;
-  }
-
-  .card p, .box p, .pilot p {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 480px) {
-  header {
-    padding: 10px 15px;
-  }
-
-  nav {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .hero h1 {
-    font-size: 22px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-
-  .hero-button, .hero .tag {
-    padding: 8px 15px;
-    font-size: 12px;
-  }
-
-  .card-section, .business, .copilot {
-    padding: 10px;
-    gap: 15px;
-  }
-
-  .card, .box, .pilot {
-    width: 100%;
-  }
-
-  .questions h1 {
-    font-size: 18px;
-  }
-}
-
-
-
-
+    .ask input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.3);
+    }
+    
+    .ask i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: gray;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+    .questions div button {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 25px;
+      padding: 12px 25px;
+      margin: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .questions div button:hover {
+      background: white;
+      color: #1b1ec4;
+      transform: translateY(-2px);
+    }
+    
+    .icon {
+      padding: 60px 180px;
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .item {
+      display: flex;
+      flex-direction: column;
+      color: #03406e;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .item p {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+    
+    .item i {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color:#1b1ec4;
+    }
+    
+    /* CARD SECTION WITH FIXED BUTTON ALIGNMENT */
+    .card-section {
+      padding: 0 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      padding-bottom: 20;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      animation: fadeInUp 0.8s ease-out;
+      /* display: flex;
+      flex-direction: column; */
+      /* height: 100%; */
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card img {
+      width: 100%;
+      /* height: 200px;
+      object-fit: cover; */
+      padding: 10px;
+      border-radius: 15px;
+      border-bottom: 1px solid #eee;
+      transition: transform 0.5s ease;
+    }
+    
+    .card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .card .tag {
+      background: #6b2bbf;
+      color: #fff;
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 30px;
+      display: inline-block;
+      margin: 12px 15px 5px;
+      font-weight: bold;
+      /* line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px; */
+    }
+    
+    .card h3 {
+      font-size: 18px;
+      margin: 12px 15px;
+      line-height: 1.3;
+      /* color: #222;
+      min-height: 50px; */
+    }
+    
+    .card p {
+      height: 100px;
+      margin: 10px 15px;
+      color: #555;
+      font-size: 14px;
+      /* line-height: 1.5; */
+      /* flex-grow: 1; */ 
+      /* margin-bottom: 15px; */
+    }
+    
+    .card button {
+      margin: 15px;
+      /* margin-top: auto; */
+      padding: 10px 18px;
+      border: none;
+      background: #1b1ec4;
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      /* width: calc(100% - 30px); */
+      /* align-self: self-start; */
+      /* text-align: center; */
+      /* font-size: 14px; */
+    /* line-height: 1.4; */
+      /* white-space: normal;
+      word-wrap: break-word; */
+      /* overflow: visible; */
+    }
+    
+    button:hover {
+      background: #0051cc;
+      transform: translateY(-2px);
+    }
+    
+    .Xbox {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+      display: flex;
+      height: 500px;
+      margin: 70px 100px;
+      background-color: #f8f9fa;
+      overflow: hidden;
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+    }
+    
+    .Xbox:hover {
+      transform: translateY(-5px);
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 40px;
+    }
+    
+    .Xbox-info {
+      width: 50%;
+      padding: 80px;
+      background-color: #f8f9fa;
+      display: grid;
+      gap: 25px;
+      align-content: center;
+    }
+    
+    .Xbox-image {
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      width: 50%;
+      overflow: hidden;
+    }
+    
+    .Xbox-image img {
+      border-radius: 15px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .Xbox:hover .Xbox-image img {
+      transform: scale(1.05);
+    }
+    
+    .Xbox-info button {
+      padding: 14px 28px;
+      border: none;
+      background:#1b1ec4;
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      width: max-content;
+      justify-self: start;
+      transition: all 0.3s ease;
+    }
+    
+    .businesses {
+      background-color: #DCEEF8;
+      padding: 50px 100px 0 100px;
+    }
+    
+    .businesses h2 {
+      font-size: 28px;
+      color: #333;
+    }
+    
+    /* BUSINESS SECTION WITH FIXED BUTTON ALIGNMENT */
+    .business {
+      background-color: #DCEEF8;
+      padding: 20px 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    
+    .box {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      padding-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      /* height: 100%; */
+    }
+    
+    .box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .box img {
+      width: 100%;
+      /* height: 200px; */
+      /* object-fit: cover; */
+      border-bottom: 1px solid #eee;
+      padding: 10px;
+      border-radius: 15px;
+      transition: transform 0.5s ease;
+    }
+    
+    .box:hover img {
+      transform: scale(1.05);
+    }
+    
+    .box h3 {
+      font-size: 18px;
+      margin: 10px 15px;
+      line-height: 1.3;
+      /* color: #222;
+      min-height: 50px; */
+    }
+    
+    .box p {
+      height: 100px;
+      margin: 10px 15px;
+      color: #555;
+      font-size: 14px;
+      /* line-height: 1.5; */
+      /* flex-grow: 1; */
+      /* margin-bottom: 15px; */
+    }
+    
+    .box button {
+      margin: 15px;
+      margin-top: auto;
+      padding: 10px 10px;
+      border: none;
+      background: #1b1ec4;
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      justify-content: end;
+      transition: all 0.3s ease;
+      width: max-content;
+      justify-self: start;
+      /* text-align: center;
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow: visible; */
+    }
+    
+    .AI {
+      background-color: #DCEEF8;
+      padding: 40px 100px;
+    }
+    
+    .AI h2 {
+      font-size: 28px;
+      color: #333;
+    }
+    
+    /* COPILOT SECTION WITH FIXED BUTTON ALIGNMENT */
+    .copilot {
+      background-color: #DCEEF8;
+      padding: 20px 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    
+    .pilot {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      padding-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      /* height: 100%; */
+    }
+    
+    .pilot:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .pilot img {
+      width: 100%;
+      /* height: 200px; */
+      padding: 10px;
+      border-radius: 15px;
+      /* object-fit: cover; */
+      border-bottom: 1px solid #eee;
+      transition: transform 0.5s ease;
+    }
+    
+    .pilot:hover img {
+      transform: scale(1.05);
+    }
+    
+    .pilot h3 {
+      font-size: 18px;
+      margin: 15px;
+      line-height: 1.4;
+      color: #222;
+      min-height: 50px;
+    }
+    
+    .pilot p {
+      height: 100px;
+      margin: 10px 15px;
+      color: #555;
+      font-size: 14px;
+      /* line-height: 1.5;
+      flex-grow: 1;
+      margin-bottom: 15px; */
+    }
+    
+    .pilot button {
+      margin: 15px;
+      margin-top: auto;
+      padding: 10px 10px;
+      border: none;
+      background: #1b1ec4;
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      justify-content: end;
+      width: max-content;
+      justify-self: start;
+      /* width: calc(100% - 30px); */
+      /* text-align: center;
+      font-size: 14px;
+      line-height: 1.4; */
+      /* white-space: normal; */
+      /* word-wrap: break-word;
+      overflow: visible; */
+    }
+    
+    .biodiversity {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+      display: flex;
+      height: 500px;
+      margin: 70px 100px;
+      background-color: #f8f9fa;
+      overflow: hidden;
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+    }
+    
+    .biodiversity:hover {
+      transform: translateY(-5px);
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 40px;
+    }
+    
+    .biodiversity-info {
+      width: 50%;
+      padding: 80px;
+      background-color: #f8f9fa;
+      display: grid;
+      gap: 25px;
+      align-content: center;
+    }
+    
+    .biodiversity-image {
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      width: 50%;
+      overflow: hidden;
+    }
+    
+    .biodiversity-image img {
+      border-radius: 15px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .biodiversity:hover .biodiversity-image img {
+      transform: scale(1.05);
+    }
+    
+    .biodiversity-info button {
+      padding: 14px 28px;
+      border: none;
+      background-color: #1b1ec4;
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      width: max-content;
+      justify-self: start;
+      transition: all 0.3s ease;
+    }
+    
+    .footer {
+      background: #F2F2F2;
+      padding: 60px 80px;
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 5px;
+    }
+    
+    .footer-col h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #333;
+    }
+    
+    .footer-col a {
+      display: block;
+      text-decoration: none;
+      color: #666;
+      font-size: 14px;
+      margin: 8px 0;
+      transition: all 0.2s;
+    }
+    
+    .footer-col a:hover {
+      color: #0067b8;
+      transform: translateX(5px);
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1200px) {
+      .hero-content {
+        left: 60px;
+        max-width: 420px;
+      }
+      
+      .icon {
+        padding: 50px 80px;
+      }
+    }
+    
+    @media (max-width: 1024px) {
+      header {
+        padding: 15px 30px;
+      }
+      
+      .hero-image {
+        height: 600px;
+      }
+      
+      .hero-content {
+        left: 40px;
+        max-width: 380px;
+        padding: 35px;
+      }
+      
+      .hero-content h1 {
+        font-size: 36px;
+      }
+      
+      .hero-content p {
+        font-size: 16px;
+      }
+      
+      .icon {
+        padding: 40px 60px;
+        gap: 30px;
+      }
+      
+      .Xbox, .biodiversity {
+        margin: 50px 60px;
+      }
+      
+      .Xbox-info, .biodiversity-info {
+        padding: 60px;
+      }
+      
+      .businesses, .AI {
+        padding: 40px 60px 0 60px;
+      }
+      
+      .business, .copilot, .card-section {
+        padding: 30px 60px 40px 60px;
+      }
+      
+      .footer {
+        padding: 40px 60px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      /* MOBILE HEADER */
+      header {
+        padding: 12px 20px;
+        flex-wrap: nowrap;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .desktop-nav {
+        display: none !important;
+      }
+      
+      .left {
+        order: 1;
+        flex: 1;
+        justify-content: flex-start;
+        gap: 15px;
+      }
+      
+      .left img {
+        height: 20px;
+      }
+      
+      .right {
+        order: 2;
+        gap: 20px;
+      }
+      
+      .right a span {
+        display: none;
+      }
+      
+      .right a i {
+        font-size: 18px;
+      }
+      
+      /* MOBILE HERO SECTION */
+      .hero-container {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .hero-image {
+        height: 400px;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        animation: zoomInOutMobile 25s ease-in-out infinite alternate;
+      }
+      
+      @keyframes zoomInOutMobile {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.1);
+        }
+      }
+      
+      .hero-content {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0;
+        border-radius: 0;
+        padding: 30px 20px;
+        background-color: #f8f9fa;
+        box-shadow: none;
+        animation: slideInUp 1s ease-out;
+        backdrop-filter: none;
+      }
+      
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .hero-content h1 {
+        font-size: 32px;
+        text-align: center;
+      }
+      
+      .hero-content p {
+        font-size: 16px;
+        text-align: center;
+      }
+      
+      .hero-content .tag {
+        display: block;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+      }
+      
+      .hero-button {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        width: fit-content;
+      }
+      
+      .right {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      
+      .icon {
+        padding: 30px 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      
+      .item {
+        flex: 0 0 45%;
+        padding: 15px 0;
+      }
+      
+      .item i {
+        font-size: 28px;
+      }
+      
+      .Xbox, .biodiversity {
+        flex-direction: column;
+        height: auto;
+        margin: 40px 20px;
+        border-radius: 15px;
+      }
+      
+      .Xbox-info, .biodiversity-info {
+        width: 100%;
+        padding: 40px 30px;
+        text-align: center;
+      }
+      
+      .Xbox-image, .biodiversity-image {
+        width: 100%;
+        padding: 20px;
+        order: -1;
+      }
+      
+      .Xbox-image img, .biodiversity-image img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+      
+      .businesses, .AI {
+        padding: 30px 20px 0 20px;
+      }
+      
+      .copilot, .card-section, .business {
+        padding: 30px 20px 40px 20px;
+      }
+      
+      .card, .box, .pilot {
+        margin: 0 auto;
+        max-width: 400px;
+      }
+      
+      .card p, .box p, .pilot p {
+        margin-bottom: 15px;
+      }
+      
+      .card .tag {
+        font-size: 10px;
+        padding: 3px 6px;
+        margin: 10px 15px 4px;
+      }
+      
+      .hero-content .tag {
+        font-size: 12px;
+        padding: 6px 12px;
+        margin-bottom: 12px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        padding: 10px 15px;
+      }
+      
+      .right {
+        gap: 15px;
+      }
+      
+      .right a {
+        font-size: 0;
+      }
+      
+      .right a i {
+        font-size: 20px;
+      }
+      
+      .hero-image {
+        height: 350px;
+      }
+      
+      .hero-content {
+        padding: 25px 15px;
+        background-color: #f8f9fa;
+      }
+      
+      .hero-content h1 {
+        font-size: 28px;
+      }
+      
+      .hero-content p {
+        font-size: 15px;
+      }
+      
+      .hero-button, .hero-content .tag {
+        padding: 12px 24px;
+        font-size: 14px;
+      }
+      
+      .icon {
+        padding: 20px 15px;
+        gap: 15px;
+      }
+      
+      .item {
+        flex: 0 0 45%;
+        padding: 10px 0;
+      }
+      
+      .item i {
+        font-size: 24px;
+      }
+      
+      .card-section, .business, .copilot {
+        padding: 20px 15px 30px 15px;
+        gap: 20px;
+      }
+      
+      .card, .box, .pilot {
+        width: 100%;
+      }
+      
+      .questions h1 {
+        font-size: 20px;
+      }
+      
+      .questions div button {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        padding: 10px 20px;
+      }
+      
+      .Xbox, .biodiversity {
+        margin: 30px 15px;
+        border-radius: 12px;
+      }
+      
+      .Xbox-info, .biodiversity-info {
+        padding: 30px 20px;
+      }
+      
+      .Xbox-image, .biodiversity-image {
+        padding: 15px;
+      }
+      
+      .Xbox-image img, .biodiversity-image img {
+        height: 200px;
+      }
+      
+      .footer {
+        padding: 30px 20px;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 320px) {
+      .hero-image {
+        height: 300px;
+      }
+      
+      .hero-content {
+        padding: 20px 15px;
+      }
+      
+      .hero-content h1 {
+        font-size: 24px;
+      }
+      
+      .hero-content p {
+        font-size: 14px;
+      }
+      
+      .item {
+        flex: 0 0 100%;
+      }
+      
+      .right {
+        gap: 12px;
+      }
+      
+      .right a i {
+        font-size: 18px;
+      }
+    }
+    .socialmedia{
+      padding-bottom: 50px;
+    }
+    .socialmedia h3{
+      display: flex;
+      justify-content: center;
+      padding-bottom: 10px;
+    }
+    .media{
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .media img{
+      border-radius: 50%;
+    }
   </style>
-
 </head>
 <body>
-    <header>
-      <div class="left">
-        <img style="height: 20px;" src="assets/logo.png" alt="Logo">
-        <nav>
-          <a href="">Microsoft 365</a>
-          <a href="">Teams</a>
-          <a href="">Copilot</a>
-          <a href="">Windows</a>
-          <a href="">Surface</a>
-          <a href="">Xbox</a>
-          <a href="">Cyber Week deals</a>
-          <a href="">Small Business</a>
-          <a href="">Support</a>
-        </nav>
-      </div>
-      <div class="right">
-        <a href="">All Microsoft <i class="fa-solid fa-chevron-down"></i></a>
-        <a href="">Search <i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href="">Cart <i class="fa-solid fa-cart-shopping"></i></a>
-        <a href="">Sign in <i class="fa-solid fa-user-plus"></i></a>
-      </div>
-    </header>
-    <section class="hero">
-      <div class="info">
-            <span class="tag">Cyber Week</span>
-            <h1>Save upto $700 on Surface <br> Laptop, 13.8-inch</h1>
-            <p>Speed, style and built-in intelligence-it's a gift for all seasons. Plus get up to $600 cash back with a qualified trade-in.</p>
-            <a href="#" class="hero-button">Shop now</a>
-      </div>
-      </section>
-      <section class="questions">
-        <div class="bx">
-          <h1>Hi there. How can we help?</h1>
-        </div>
-        <div class="ask">
-          <input type="text"placeholder="Ask me a question">
-          <i class="fa-solid fa-magnifying-glass fas"></i>
-        </div>
-        <div>
-          <button>Which PC is right for me?</button>
-          <button>Sign in to my account</button>
-          <button>How can my business use Azure?</button>
-        </div>
-      </section>
-      <section class="icon">
-        <div class="item ax"><i class="fa-solid fa-laptop"></i> <br><p>Cyber week deals: Surface </p></div>
-        <div class="item bx"><i class="fa-brands fa-xbox"></i><br><p>Cyber Week deals: Xbox </p></div>
-        <div class="item cx"><i class="fa-regular fa-keyboard"></i><br><p>Cyber Week deals: Accessories </p></div>
-        <div class="item dx"><i class="fa-regular fa-building"></i><br> <p>Shop your business </p></div>
-        <div class="item ex"><i class="fa-brands fa-microsoft"></i><br><p>Choose your Microsoft 365 </p></div>
-      </section>
-
-      <section class="card-section">
-        <div class="card">
-          <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Pro-11-13-inch-Render-Dune-Angled-Copilot-PC?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-          <span class="tag">Cyber Week</span>
-          <h3>Save upto $700.00 on select surface pro, 13-inch</h3>
-          <p>Big savings, Bigger potential. Do more with cyber week savings on the most powerful 2-in-1 out there.</p>
-          <button>Shop now</button>
-        </div>
-
-        <div class="card">
-        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Laptop-Black-15-Copilot-PC?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-        <span class="tag">Cyber Week</span>
-        <h3>Save up to $700 on select Surface Laptop, 15-inch</h3>
-        <p>Deals are now live—save big on built-in AI and an expansive 15-inch display.</p>
-        <button>Shop now</button>
+  <header>
+    <div class="left">
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <img style="height: 20px;" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="Microsoft Logo">
+      <nav class="desktop-nav">
+        <a href="">Microsoft 365</a>
+        <a href="">Teams</a>
+        <a href="">Copilot</a>
+        <a href="">Windows</a>
+        <a href="">Surface</a>
+        <a href="">Xbox</a>
+        <a href="">Deals</a>
+        <a href="">Support</a>
+      </nav>
     </div>
-
+    
+    <div class="right">
+      <a href=""><span>All Microsoft</span> <i class="fa-solid fa-chevron-down"></i></a>
+      <a href=""><span>Search</span> <i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href=""><span>Cart</span> <i class="fa-solid fa-cart-shopping"></i></a>
+      <a href=""><span>Sign in</span> <i class="fa-solid fa-user-plus"></i></a>
+    </div>
+  </header>
+  
+  <section class="hero-container">
+    <div class="hero-image"></div>
+    <div class="hero-content">
+      <span class="tag">Cyber Week</span>
+      <h1>Save upto $700 on Surface <br> Laptop, 13.8-inch</h1>
+      <p>Speed, style and built-in intelligence-it's a gift for all seasons. Plus get up to $600 cash back with a qualified trade-in.</p>
+      <a href="#" class="hero-button">Shop now</a>
+    </div>
+  </section>
+  
+  <section class="questions">
+    <div class="bx">
+      <h1>Hi there. How can we help?</h1>
+    </div>
+    <div class="ask">
+      <input type="text" placeholder="Ask me a question">
+      <i class="fa-solid fa-magnifying-glass fas"></i>
+    </div>
+    <div>
+      <button>Which PC is right for me?</button>
+      <button>Sign in to my account</button>
+      <button>How can my business use Azure?</button>
+    </div>
+  </section>
+  
+  <section class="icon">
+    <div class="item ax"><i class="fa-solid fa-laptop"></i> <br><p>Cyber week deals: Surface </p></div>
+    <div class="item bx"><i class="fa-brands fa-xbox"></i><br><p>Cyber Week deals: Xbox </p></div>
+    <div class="item cx"><i class="fa-regular fa-keyboard"></i><br><p>Cyber Week deals: Accessories </p></div>
+    <div class="item dx"><i class="fa-regular fa-building"></i><br> <p>Shop your business </p></div>
+    <div class="item ex"><i class="fa-brands fa-microsoft"></i><br><p>Choose your Microsoft 365 </p></div>
+  </section>
+  
+  <section class="card-section">
+    <div class="card">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Pro-11-13-inch-Render-Dune-Angled-Copilot-PC?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <span class="tag">Cyber Week</span>
+      <h3>Save upto $700.00 on select surface pro, 13-inch</h3>
+      <p>Big savings, Bigger potential. Do more with cyber week savings on the most powerful 2-in-1 out there.</p>
+      <button>Shop now</button>
+    </div>
     
     <div class="card">
-        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Windows-11-Talk-Copilot?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-        <span class="tag">Cyber Week</span>
-        <h3>Meet the computer you can talk to</h3>
-        <p>We typed, we clicked, now we're talking.</p>
-        <button>Meet Windows 11</button>
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Laptop-Black-15-Copilot-PC?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <span class="tag">Cyber Week</span>
+      <h3>Save up to $700 on select Surface Laptop, 15-inch</h3>
+      <p>Deals are now live—save big on built-in AI and an expansive 15-inch display.</p>
+      <button>Shop now</button>
     </div>
-
     
     <div class="card">
-        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Xbox-Series-X-Family-Complete-Bundle-FY26HOL?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-        <span class="tag">Cyber Week</span>
-        <h3>Purchase select Xbox Series X, get a protection plan</h3>
-        <p>Get 3-year Microsoft Complete protection plan bundled for $1 with purchase of Xbox Series X.</p>
-        <button>Shop now</button>
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Windows-11-Talk-Copilot?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <span class="tag">Cyber Week</span>
+      <h3>Meet the computer you can talk to</h3>
+      <p>We typed, we clicked, now we're talking.</p>
+      <button>Meet Windows 11</button>
     </div>
-      </section>
-
-      <section class="Xbox">
-       <div class="Xbox-info">
-        <h1>Xbox Design Lab controllers</h1>
-        <p>Add free engraving and save up to 20% off select controllers and components to give a gift thats uniquely theirs.</p>
-        <button>Design yours</button>
-       </div> 
-       <div class="Xbox-image">
-        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Card-Horizontal-Xbox-Design-Lab-Controller-Trio-FY26HOL?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=3840&hei=2160&qlt=95&fit=constrain" alt="">
-       </div>
-      </section>
-      <div class="businesses">
-        <h2>For Business</h2>
-      </div>
-      <section class="business">
-        <div class="box bx1">
-          <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Laptop-5G-Platinum-Commercial?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-          <h3>Up to $135 off select Surface Laptop for Business</h3>
-          <p>13.8 and 15-inch devices feature Window 11 Pro, uncompromising power, all-day battery life,a nd Intel Core Ultra processors(Series2)</p>
-          <button>Shop now</button>
-        </div>
-        <div class="box bx2">
-          <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Microsoft-365-Copilot-COMMR-0625?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-          <h3>Microsoft 365 Copilot</h3>
-          <p>Save time and focus on the things that matter most with AI in Microsoft 365 for business</p>
-          <button>Learn more</button>
-        </div>
-        <div class="box bx3">
-          <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Microsoft-Teams-Commercial-Meeting?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-          <h3>Get Microsoft Teams for your business</h3>
-          <p>Online meetings, chat, real-time collaboration, and shared cloud storage - all in one place.</p>
-          <button>Find the right plan for your business</button>
-        </div>
-        <div class="box bx4">
-          <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Azure-AI-Bloom?resMode=sharp2&op_usm=1.5,0.65,15,0&qlt=85" alt="">
-          <h3>Join the era of AI</h3>
-          <p>Create, communicate, and code with the latest Microsoft AI solutions.</p>
-          <button>Explore AI solutions</button>
-        </div>
-       
-      </section>
-      <div class="AI"><h2>Get to know AI and Copilot</h2></div>
-      <section class="copilot">
-        <div class="pilot">
-          <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Vibe-Coding?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-          <h3>Turning words into apps</h3>
-          <p>"Vibe coding" allows people to build software by talking through an idea with a microsoft AI tool that writes the code</p>
-          <button>Learn more</button>
-        </div>
-        <div class="pilot">
-          <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Reimagine-AI-Teal-Waters?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-          <h3>The future of conservation</h3>
-          <p>Researchers hope that a new AI tool will help biologists locate and restore bogs, marshes, and other vital wetlands</p>
-          <button>Find out how</button>
-        </div>
-        <div class="pilot">
-          <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-AI-Agent-Researcher?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
-          <h3>Your new on-call assistant</h3>
-          <p>Here are six ways Researcher, an AI agent in Microsoft 365 Copilot, can help you knock your toughest work tasks out of the park.</p>
-          <button>Learn more</button>
-        </div>
-
-      </section>
-          <section class="biodiversity">
-       <div class="biodiversity-info">
-        <h1>Protecting biodiversity with AI</h1>
-        <p>Microsoft's AI for Good Lab created Project SPARROW to observe wildlife in remote locations.</p>
-        <button>Learn more</button>
-       </div> 
-       <div class="biodiversity-image">
-        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Card-Horizontal-AI-Project-Sparrow?resMode=sharp2&op_usm=1.5,0.65,15,0&qlt=85" alt="">
-       </div>
-      </section>
-      <footer class="footer">
-  <div class="footer-container">
-
-    <div class="footer-col">
-      <h4>What's new</h4>
-      <a href="#">Surface Pro</a>
-      <a href="#">Surface Laptop</a>
-      <a href="#">Surface Laptop Studio 2</a>
-      <a href="#">Copilot for organizations</a>
-      <a href="#">Copilot for personal use</a>
-      <a href="#">AI in Windows</a>
-      <a href="#">Explore Microsoft products</a>
-      <a href="#">Windows 11 apps</a>
+    
+    <div class="card">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Xbox-Series-X-Family-Complete-Bundle-FY26HOL?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <span class="tag">Cyber Week</span>
+      <h3>Purchase select Xbox Series X, get a protection plan</h3>
+      <p>Get 3-year Microsoft Complete protection plan bundled for $1 with purchase of Xbox Series X.</p>
+      <button>Shop now</button>
     </div>
-
-    <div class="footer-col">
-      <h4>Microsoft Store</h4>
-      <a href="#">Account profile</a>
-      <a href="#">Download Center</a>
-      <a href="#">Microsoft Store support</a>
-      <a href="#">Returns</a>
-      <a href="#">Order tracking</a>
-      <a href="#">Certified refurbished</a>
-      <a href="#">Microsoft Store Promise</a>
-      <a href="#">Flexible Payments</a>
+  </section>
+  
+  <section class="Xbox">
+    <div class="Xbox-info">
+      <h1>Xbox Design Lab controllers</h1>
+      <p>Add free engraving and save up to 20% off select controllers and components to give a gift thats uniquely theirs.</p>
+      <button>Design yours</button>
     </div>
-
-    <div class="footer-col">
-      <h4>Education</h4>
-      <a href="#">Microsoft in education</a>
-      <a href="#">Devices for education</a>
-      <a href="#">Teams for Education</a>
-      <a href="#">Microsoft 365 Education</a>
-      <a href="#">How to buy for your school</a>
-      <a href="#">Training and development</a>
-      <a href="#">Deals for students</a>
-      <a href="#">AI for education</a>
+    <div class="Xbox-image">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Card-Horizontal-Xbox-Design-Lab-Controller-Trio-FY26HOL?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=3840&hei=2160&qlt=95&fit=constrain" alt="">
     </div>
-
-    <div class="footer-col">
-      <h4>Business</h4>
-      <a href="#">Microsoft Cloud</a>
-      <a href="#">Microsoft Security</a>
-      <a href="#">Dynamics 365</a>
-      <a href="#">Microsoft 365</a>
-      <a href="#">Power Platform</a>
-      <a href="#">Microsoft Teams</a>
-      <a href="#">Microsoft 365 Copilot</a>
-      <a href="#">Small Business</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Developer & IT</h4>
-      <a href="#">Azure</a>
-      <a href="#">Microsoft Developer</a>
-      <a href="#">Microsoft Learn</a>
-      <a href="#">AI marketplace apps</a>
-      <a href="#">Tech Community</a>
-      <a href="#">Marketplace Rewards</a>
-      <a href="#">Visual Studio</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#">Careers</a>
-      <a href="#">About Microsoft</a>
-      <a href="#">Company news</a>
-      <a href="#">Privacy</a>
-      <a href="#">Investors</a>
-      <a href="#">Diversity and inclusion</a>
-      <a href="#">Accessibility</a>
-      <a href="#">Sustainability</a>
-    </div>
-
+  </section>
+  
+  <div class="businesses">
+    <h2>For Business</h2>
   </div>
-</footer>
-
-
+  
+  <section class="business">
+    <div class="box bx1">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Laptop-5G-Platinum-Commercial?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <h3>Up to $135 off select Surface Laptop for Business</h3>
+      <p>13.8 and 15-inch devices feature Window 11 Pro, uncompromising power, all-day battery life,a nd Intel Core Ultra processors(Series2)</p>
+      <button>Shop now</button>
+    </div>
+    <div class="box bx2">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Microsoft-365-Copilot-COMMR-0625?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <h3>Microsoft 365 Copilot</h3>
+      <p>Save time and focus on the things that matter most with AI in Microsoft 365 for business</p>
+      <button>Learn more</button>
+    </div>
+    <div class="box bx3">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Microsoft-Teams-Commercial-Meeting?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <h3>Get Microsoft Teams for your business</h3>
+      <p>Online meetings, chat, real-time collaboration, and shared cloud storage - all in one place.</p>
+      <button>Find the right plan for your business</button>
+    </div>
+    <div class="box bx4">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Azure-AI-Bloom?resMode=sharp2&op_usm=1.5,0.65,15,0&qlt=85" alt="">
+      <h3>Join the era of AI</h3>
+      <p>Create, communicate, and code with the latest Microsoft AI solutions.</p>
+      <button>Explore AI solutions</button>
+    </div>
+  </section>
+  
+  <div class="AI">
+    <h2>Get to know AI and Copilot</h2>
+  </div>
+  
+  <section class="copilot">
+    <div class="pilot">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Vibe-Coding?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <h3>Turning words into apps</h3>
+      <p>"Vibe coding" allows people to build software by talking through an idea with a microsoft AI tool that writes the code</p>
+      <button>Learn more</button>
+    </div>
+    <div class="pilot">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Reimagine-AI-Teal-Waters?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <h3>The future of conservation</h3>
+      <p>Researchers hope that a new AI tool will help biologists locate and restore bogs, marshes, and other vital wetlands</p>
+      <button>Find out how</button>
+    </div>
+    <div class="pilot">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-AI-Agent-Researcher?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=520&hei=224&qlt=85&fit=constrain" alt="">
+      <h3>Your new on-call assistant</h3>
+      <p>Here are six ways Researcher, an AI agent in Microsoft 365 Copilot, can help you knock your toughest work tasks out of the park.</p>
+      <button>Learn more</button>
+    </div>
+  </section>
+  
+  <section class="biodiversity">
+    <div class="biodiversity-info">
+      <h1>Protecting biodiversity with AI</h1>
+      <p>Microsoft's AI for Good Lab created Project SPARROW to observe wildlife in remote locations.</p>
+      <button>Learn more</button>
+    </div>
+    <div class="biodiversity-image">
+      <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Card-Horizontal-AI-Project-Sparrow?resMode=sharp2&op_usm=1.5,0.65,15,0&qlt=85" alt="">
+    </div>
+  </section>
+  <section class="socialmedia">
+    <h3>Follow Microsoft</h3>
+    <div class="media">
+      <img src="assets/social-fb.png" alt="">
+      <img src="assets/social-linkedin.png" alt="">
+      <img src="assets/social-twitter.png" alt="">
+    </div>
+    <div></div>
+  </section>
+  
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>What's new</h4>
+        <a href="#">Surface Pro</a>
+        <a href="#">Surface Laptop</a>
+        <a href="#">Surface Laptop Studio 2</a>
+        <a href="#">Copilot for organizations</a>
+        <a href="#">Copilot for personal use</a>
+        <a href="#">AI in Windows</a>
+        <a href="#">Explore Microsoft products</a>
+        <a href="#">Windows 11 apps</a>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Microsoft Store</h4>
+        <a href="#">Account profile</a>
+        <a href="#">Download Center</a>
+        <a href="#">Microsoft Store support</a>
+        <a href="#">Returns</a>
+        <a href="#">Order tracking</a>
+        <a href="#">Certified refurbished</a>
+        <a href="#">Microsoft Store Promise</a>
+        <a href="#">Flexible Payments</a>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Education</h4>
+        <a href="#">Microsoft in education</a>
+        <a href="#">Devices for education</a>
+        <a href="#">Teams for Education</a>
+        <a href="#">Microsoft 365 Education</a>
+        <a href="#">How to buy for your school</a>
+        <a href="#">Training and development</a>
+        <a href="#">Deals for students</a>
+        <a href="#">AI for education</a>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Business</h4>
+        <a href="#">Microsoft Cloud</a>
+        <a href="#">Microsoft Security</a>
+        <a href="#">Dynamics 365</a>
+        <a href="#">Microsoft 365</a>
+        <a href="#">Power Platform</a>
+        <a href="#">Microsoft Teams</a>
+        <a href="#">Microsoft 365 Copilot</a>
+        <a href="#">Small Business</a>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Developer & IT</h4>
+        <a href="#">Azure</a>
+        <a href="#">Microsoft Developer</a>
+        <a href="#">Microsoft Learn</a>
+        <a href="#">AI marketplace apps</a>
+        <a href="#">Tech Community</a>
+        <a href="#">Marketplace Rewards</a>
+        <a href="#">Visual Studio</a>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">Careers</a>
+        <a href="#">About Microsoft</a>
+        <a href="#">Company news</a>
+        <a href="#">Privacy</a>
+        <a href="#">Investors</a>
+        <a href="#">Diversity and inclusion</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sustainability</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
